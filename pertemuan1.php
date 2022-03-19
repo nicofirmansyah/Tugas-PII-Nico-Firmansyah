@@ -40,7 +40,7 @@ class Hewan extends Mahlukhidup{
         echo "
         HEWAN <br>
         # $this->nama <br>
-        - $umur Bulan <br>
+        - $umur Tahun <br>
         - $jenishewan <br>
         - $jeniskelamin <br>
         - Makanan Kesukaan Hewan <br>";
@@ -55,93 +55,95 @@ class Hewan extends Mahlukhidup{
     }    
 }
 
-class BendaMati{
-    public $namabenda;
+
+
+////////////////////////////////
+
+
+class Bangunan {
+    public $nama;
   
-    function __construct($namabenda) {
-      $this->namabenda = $namabenda;
+    function __construct($nama) {
+      $this->nama = $nama;
     }
-    public function ambilNamabenda()
+    public function ambilNama()
     {
-      return $this->namabenda;
+      return $this->nama;
     }
+}
+ 
+class Pribadi extends Bangunan {
+    public function detailRuangan($luas, $harga)
+    {
+        echo "
+        Bangunan Pribadi <br>
+        # $this->nama <br>
+        - Luas Tanah $luas <br>
+        - Harga $harga <br>
+        - Jumlah Ruangan <br>";
+        
+    }    
+    public function jumlahRuangan($nama_ruangan, $jumlah)
+    {
+        echo "
+        &nbsp;&nbsp; + $nama_ruangan $jumlah ruangan.
+        <br>
+        ";
+    }    
+    
+}
+class Umum extends Bangunan {
+    public function detailBangunan($luas, $harga)
+    {
+        echo "
+        Bangunan Umum <br>
+        # $this->nama <br>
+        - Luas Tanah $luas <br>
+        - Harga $harga <br>
+        - Jumlah Bangunan Ruangan <br>";
+        
+    }    
+    public function jumlahBangunan($nama_bangunan, $jumlah)
+    {
+        echo "
+        &nbsp;&nbsp; + $nama_bangunan $jumlah bangunan.
+        <br>
+        ";
+    }   
+
 }
 
-class Kendaraan extends BendaMati{
-    public function jenisKendaraan($merek, $tipe ,$jenis)
-    {
-        echo "
-        Kendaraan <br>
-        # $this->namabenda <br>
-        - $merek <br>
-        - $tipe <br>
-        - $jenis <br>
-        - Detail Kendaraan <br>";
-        
-    }    
-    public function banyakKendaraan($warna, $jumlah)
-    {
-        echo "
-        &nbsp;&nbsp; + $warna = jumlah $jumlah
-        <br>
-        ";
-    }    
-}
-class Lainnya extends BendaMati{
-    public function jenisbenda($merek, $tipe ,$jenis)
-    {
-        echo "
-        Benda Lainnya <br>
-        # $this->namabenda <br>
-        - $merek <br>
-        - $tipe <br>
-        - $jenis <br>
-        - Detail Benda <br>";
-        
-    }    
-    public function banyakbenda($warna, $jumlah)
-    {
-        echo "
-        &nbsp;&nbsp; + $warna = jumlah $jumlah unit
-        <br>
-        ";
-    }    
-}
+echo "++CLASS PARENT PERTAMA++ <br>";
+echo "==CLASS CHILD PERTAMA==<br><br>";
+$new = New Manusia("Nico Firmansyah");
+$new->biodata(20, "Laki-Laki");
+$new->makananKesukaan("Ayam Goreng");
+$new->makananKesukaan("Nasi Goreng");
+echo "<br>==CLASS CHILD KEDUA==<br><br>";
+$hewan = New Hewan("Buaya");
+$hewan->biodataHewan(3, "Reptil" ,"Jantan");
+$hewan->makananKesukaanHewan("Daging Ayam Segar");
+$hewan->makananKesukaanHewan("Daging Sapi");
+
+
+echo  
+"<br><br><br><center>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</center>";
 
 
 echo "++CLASS PARENT PERTAMA++ <br>";
 echo "==CLASS CHILD PERTAMA==<br><br>";
-$new = New Manusia("Usman");
-$new->biodata(19, "Laki Laki");
-$new->makananKesukaan("Pempek");
-$new->makananKesukaan("Siomay");
-$new->makananKesukaan("Ayam Goyeng");
-echo "<br>==CLASS CHILD KEDUA==<br><br>";
-$hewan = New Hewan("Kucing");
-$hewan->biodataHewan(19, "Mamalia" ,"Laki Laki");
-$hewan->makananKesukaanHewan("Ikan Asin");
-$hewan->makananKesukaanHewan("Wishkas");
-$hewan->makananKesukaanHewan("Ayam Goyeng");
+
+$pribadi = new Pribadi("Rumah Pribadi");
+$pribadi->detailRuangan("23 M2", "Rp. 200000");
+$pribadi->jumlahRuangan("kamar mandi", 10);
+$pribadi->jumlahRuangan("kamar tidur", 2);
+$pribadi->jumlahRuangan("Dapur", 10);
 
 
-echo "<br><br><br>++CLASS PARENT KEDUA++ <br>";
-echo "==CLASS CHILD PERTAMA==<br><br>";
-$benda1 = New Kendaraan("Mobil");
-$benda1->jenisKendaraan("HONDA", "Matic", "SPORT");
-$benda1->banyakKendaraan("Merah", 10);
-$benda1->banyakKendaraan("Hijau", 190);
-$benda1->banyakKendaraan("Biru", 17);
-echo "<br>==CLASS CHILD KEDUA==<br><br>";
-$benda1 = New Kendaraan("Kursi");
-$benda1->jenisKendaraan("INOAC", "Kursi kantor", "tipe kursi singel");
-$benda1->banyakKendaraan("Kuning", 90);
-$benda1->banyakKendaraan("Hijau", 190);
-$benda1->banyakKendaraan("Hitam", 177);
+echo "==CLASS CHILD KEDUA ==<br><br>";
 
-
-
-
-
-
-
- 
+$pribadi = new Umum("Hotel");
+$pribadi->detailBangunan("1 Hektar", "Rp. 100000000");
+$pribadi->jumlahBangunan("Kamar Tamu", 200);
+$pribadi->jumlahBangunan("Ruang Makan Tamu", 3);
+$pribadi->jumlahBangunan("Ruang Meeting", 10    );
